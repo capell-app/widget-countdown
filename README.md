@@ -35,21 +35,44 @@ Screenshot contract: `docs/screenshots.json`.
 
 ![Countdown Widget extension card](docs/screenshots/extension-card.svg)
 
-![Countdown fields in Layout Builder](docs/screenshots/countdown-layout-builder-editor.png)
+![Illustrative countdown public output preview](docs/screenshots/countdown-public-output.png)
 
-- Countdown Widget extension card (marketplace, required).
-- Countdown fields in Layout Builder (admin, optional).
-- Countdown public output (frontend, optional).
+- Countdown Widget extension card (marketplace, required evidence).
+- Countdown fields in Layout Builder (admin, supplementary evidence).
+- Illustrative countdown public output preview (frontend, required evidence).
+- Countdown fields in Layout Builder with admin sidebar menu open (admin, supplementary evidence).
 
 ## Technical Shape
 
-- Service providers: `Capell\WidgetCountdown\Providers\WidgetCountdownServiceProvider`.
-- Filament classes: `CountdownWidget`.
-- Data objects: `CountdownInputData`, `CountdownRenderData`.
-- Manifest contributions: `content-widget: Capell\WidgetCountdown\WidgetCountdownContribution`.
-- Health checks: `Capell\WidgetCountdown\Health\WidgetCountdownHealthCheck`.
-- Blade views: `packages/widget-countdown/resources/views/widget.blade.php`.
-- Cache tags: `widget-countdown`.
+### Service providers
+
+- `Capell\WidgetCountdown\Providers\WidgetCountdownServiceProvider`
+
+### Filament classes
+
+- `CountdownWidget`
+
+### Data objects
+
+- `CountdownInputData`
+- `CountdownRenderData`
+
+### Manifest contributions
+
+- `content-widget: Capell\WidgetCountdown\WidgetCountdownContribution`
+
+### Health checks
+
+- `Capell\WidgetCountdown\Health\WidgetCountdownHealthCheck`
+
+### Blade views
+
+- `packages/widget-countdown/resources/views/widget.blade.php`
+
+### Cache tags
+
+- `widget-countdown`
+
 
 ## Data Model
 
@@ -60,7 +83,7 @@ This package has no schema impact. It extends Capell through `content-widget` co
 - Required packages: `capell-app/admin`, `capell-app/core`, `capell-app/frontend`, `capell-app/layout-builder`.
 - Admin navigation: no admin page or resource contribution is declared.
 - Admin/editor extensions: `content-widget: WidgetCountdownContribution`.
-- Permissions: none declared in `capell.json`.
+- Permissions: no package permission declarations or Shield gates detected; host access rules still apply.
 - Public routes: none declared.
 - Database changes: no package migrations declared.
 - Config: no package config files.
@@ -85,8 +108,7 @@ This package has no schema impact. It extends Capell through `content-widget` co
 ## Quick Start
 
 1. Install the package: `composer require capell-app/widget-countdown`.
-2. No package-specific setup command or migrations are declared.
-3. Open the package detail or install-intent surface and confirm the Countdown Widget extension card is present.
+2. Open `/screenshot-fixtures/catalogue/widget-countdown/countdown-public-output` and confirm the public output renders without admin state.
 
 ## Next Steps
 
