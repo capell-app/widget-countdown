@@ -1,1 +1,136 @@
-{"manifest-version":3,"name":"capell-app/widget-countdown","slug":"widget-countdown","displayName":"Countdown Widget","kind":"package","capellApiVersion":"^4.1","version":"4.x-dev","description":"IANA timezone countdowns with normalized UTC targets, an absolute time fallback, and low-frequency announcements.","product":{"group":"Capell Foundation","tier":"free","bundle":"foundation"},"namespace":"Capell\\WidgetCountdown","surfaces":["admin","frontend"],"dependencies":{"requires":["capell-app/admin","capell-app/core","capell-app/frontend","capell-app/layout-builder"],"supports":[],"conflicts":[]},"providers":{"metadata":[],"install":[],"runtime":["Capell\\WidgetCountdown\\Providers\\WidgetCountdownServiceProvider"],"admin":[],"frontend":[]},"contributes":[{"type":"content-widget","class":"Capell\\WidgetCountdown\\WidgetCountdownContribution"}],"database":{"migrations":false,"settings":false,"requiredTables":[]},"commands":{"install":null,"setup":null,"setupParams":[],"demo":null,"doctor":null},"settings":[],"permissions":[],"capabilities":["frontend.public-static"],"security":{"riskTier":"low","publicSurface":{"routeNames":[],"auth":"none","csrfExemptRoutes":[],"signedRoutes":[],"tokenizedRoutes":[],"webhookRoutes":[],"throttledRoutes":[]},"sensitiveData":{"encryptedFields":[],"hashedTokenFields":[],"redactedOutputClasses":[],"plaintextJustifications":[]},"publicOutput":{"cacheSafe":true,"forbidAuthoringSurface":true,"forbidSecrets":true,"forbidPublicBladeQueries":true},"externalHttpClients":{"requiresTimeouts":false,"requiresSecretRedaction":false,"clients":[]},"adminSurface":{"authorization":"panel-auth","permissions":[]}},"performance":{"frontendRenderBudgetMs":5,"adminQueryBudget":0,"cacheTags":["widget-countdown"],"cacheSafety":{"cacheable":true,"variesBy":["site","locale","theme"],"sensitiveOutput":false,"invalidationSources":[{"model":"Capell\\Core\\Models\\Page","events":["created","updated","deleted","restored","forceDeleted"]}],"queueInvalidation":false}},"healthChecks":[{"key":"widget-countdown.package-health","label":"Countdown widget package health","class":"Capell\\WidgetCountdown\\Health\\WidgetCountdownHealthCheck","severity":"critical","surface":"frontend"}],"commercial":{"proposedLicense":"free","requestedCertification":"first-party","supportPolicy":"capell-first-party","privateDocsRequested":false},"marketplace":{"summary":"Accessible timezone-safe countdowns with durable absolute-time fallbacks.","screenshots":[{"path":"docs/assets/marketplace/extension-card.jpg","alt":"Countdown widget preview","caption":"Countdown widget"}],"categories":["foundation","frontend","events"]}}
+{
+    "manifest-version": 3,
+    "name": "capell-app/widget-countdown",
+    "slug": "widget-countdown",
+    "displayName": "Countdown Widget",
+    "kind": "package",
+    "capellApiVersion": "^1.0",
+    "version": "1.x-dev",
+    "description": "IANA timezone countdowns with normalized UTC targets, an absolute time fallback, and low-frequency announcements.",
+    "product": {
+        "group": "Capell Foundation",
+        "tier": "free",
+        "bundle": "foundation"
+    },
+    "namespace": "Capell\\WidgetCountdown",
+    "surfaces": ["admin", "frontend"],
+    "dependencies": {
+        "requires": [
+            "capell-app/admin",
+            "capell-app/core",
+            "capell-app/frontend",
+            "capell-app/layout-builder"
+        ],
+        "supports": [],
+        "conflicts": []
+    },
+    "providers": {
+        "metadata": [],
+        "install": [],
+        "runtime": [
+            "Capell\\WidgetCountdown\\Providers\\WidgetCountdownServiceProvider"
+        ],
+        "admin": [],
+        "frontend": []
+    },
+    "contributes": [
+        {
+            "type": "content-widget",
+            "class": "Capell\\WidgetCountdown\\WidgetCountdownContribution"
+        }
+    ],
+    "database": {
+        "migrations": false,
+        "settings": false,
+        "requiredTables": []
+    },
+    "commands": {
+        "install": null,
+        "setup": null,
+        "setupParams": [],
+        "demo": null,
+        "doctor": null
+    },
+    "settings": [],
+    "permissions": [],
+    "capabilities": ["frontend.public-static"],
+    "security": {
+        "riskTier": "low",
+        "publicSurface": {
+            "routeNames": [],
+            "auth": "none",
+            "csrfExemptRoutes": [],
+            "signedRoutes": [],
+            "tokenizedRoutes": [],
+            "webhookRoutes": [],
+            "throttledRoutes": []
+        },
+        "sensitiveData": {
+            "encryptedFields": [],
+            "hashedTokenFields": [],
+            "redactedOutputClasses": [],
+            "plaintextJustifications": []
+        },
+        "publicOutput": {
+            "cacheSafe": true,
+            "forbidAuthoringSurface": true,
+            "forbidSecrets": true,
+            "forbidPublicBladeQueries": true
+        },
+        "externalHttpClients": {
+            "requiresTimeouts": false,
+            "requiresSecretRedaction": false,
+            "clients": []
+        },
+        "adminSurface": { "authorization": "panel-auth", "permissions": [] }
+    },
+    "performance": {
+        "frontendRenderBudgetMs": 5,
+        "adminQueryBudget": 0,
+        "cacheTags": ["widget-countdown"],
+        "cacheSafety": {
+            "cacheable": true,
+            "variesBy": ["site", "locale", "theme"],
+            "sensitiveOutput": false,
+            "invalidationSources": [
+                {
+                    "model": "Capell\\Core\\Models\\Page",
+                    "events": [
+                        "created",
+                        "updated",
+                        "deleted",
+                        "restored",
+                        "forceDeleted"
+                    ]
+                }
+            ],
+            "queueInvalidation": false
+        }
+    },
+    "healthChecks": [
+        {
+            "key": "widget-countdown.package-health",
+            "label": "Countdown widget package health",
+            "class": "Capell\\WidgetCountdown\\Health\\WidgetCountdownHealthCheck",
+            "severity": "critical",
+            "surface": "frontend"
+        }
+    ],
+    "commercial": {
+        "proposedLicense": "free",
+        "requestedCertification": "first-party",
+        "supportPolicy": "capell-first-party",
+        "privateDocsRequested": false
+    },
+    "marketplace": {
+        "summary": "Accessible timezone-safe countdowns with durable absolute-time fallbacks.",
+        "screenshots": [
+            {
+                "path": "docs/assets/marketplace/extension-card.jpg",
+                "alt": "Countdown widget preview",
+                "caption": "Countdown widget"
+            }
+        ],
+        "categories": ["foundation", "frontend", "events"]
+    }
+}
