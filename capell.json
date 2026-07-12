@@ -4,7 +4,7 @@
     "slug": "widget-countdown",
     "displayName": "Countdown Widget",
     "kind": "package",
-    "capellApiVersion": "^4.0",
+    "capellApiVersion": "^0.0",
     "version": "0.0.x-dev",
     "description": "IANA timezone countdowns with normalized UTC targets, an absolute time fallback, and low-frequency announcements.",
     "product": {
@@ -36,8 +36,8 @@
     "contributes": [
         {
             "type": "content-widget",
-            "class": "Capell\\WidgetCountdown\\WidgetCountdownContribution",
-            "key": "capell-app.widget-countdown"
+            "key": "capell-app.countdown",
+            "class": "Capell\\WidgetCountdown\\WidgetCountdownContribution"
         }
     ],
     "database": {
