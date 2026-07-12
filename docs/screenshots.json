@@ -1,0 +1,52 @@
+{
+    "package": "widget-countdown",
+    "composerName": "capell-app/widget-countdown",
+    "generatedFor": "deployment-screenshot-runner",
+    "requiresInstalledPackage": true,
+    "composerRequires": [
+        "capell-app/widget-countdown",
+        "capell-app/layout-builder"
+    ],
+    "outputDirectory": "packages/widget-countdown/docs/screenshots",
+    "auditStatus": "fixture-needed",
+    "auditReason": "The package is release-ready with honest interim Marketplace artwork; deterministic Layout Builder and public-page fixtures still need capture.",
+    "entries": [
+        {
+            "id": "widget-countdown-extension-card",
+            "title": "Countdown Widget extension card.",
+            "package": "widget-countdown",
+            "surface": "marketplace",
+            "targetType": "marketplace-asset",
+            "target": "extension-card",
+            "required": true,
+            "path": "docs/assets/marketplace/extension-card.svg",
+            "screenshotPath": "packages/widget-countdown/docs/screenshots/extension-card.svg",
+            "notes": "Committed Beta Marketplace card artwork for Countdown Widget.",
+            "useCase": "A buyer reviews the Beta extension card before enabling Countdown Widget."
+        },
+        {
+            "id": "countdown-layout-builder-editor",
+            "title": "Countdown fields in Layout Builder.",
+            "package": "widget-countdown",
+            "surface": "admin",
+            "targetType": "admin-surface",
+            "target": "Layout Builder page editor",
+            "required": false,
+            "notes": "Capture the timezone and target fields plus a public timer showing days, hours, minutes, and the absolute-time fallback. Capture the editor state before the page is published.",
+            "useCase": "An editor can see the fields used to configure the Countdown widget.",
+            "screenshotPath": "packages/widget-countdown/docs/screenshots/countdown-layout-builder-editor.png"
+        },
+        {
+            "id": "countdown-public-output",
+            "title": "Countdown public output.",
+            "package": "widget-countdown",
+            "surface": "frontend",
+            "targetType": "artifact",
+            "target": "Seeded public page fixture",
+            "required": false,
+            "notes": "Capture the timezone and target fields plus a public timer showing days, hours, minutes, and the absolute-time fallback. Verify the rendered HTML contains no authoring controls, field paths, model identifiers, or signed admin URLs.",
+            "useCase": "A visitor understands when an event starts regardless of timezone or JavaScript availability.",
+            "screenshotPath": "packages/widget-countdown/docs/screenshots/countdown-public-output.png"
+        }
+    ]
+}
