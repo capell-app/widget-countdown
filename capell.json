@@ -4,8 +4,8 @@
     "slug": "widget-countdown",
     "displayName": "Countdown Widget",
     "kind": "package",
-    "capellApiVersion": "^4.0",
-    "version": "1.x-dev",
+    "capellApiVersion": "^0.0",
+    "version": "0.0.x-dev",
     "description": "IANA timezone countdowns with normalized UTC targets, an absolute time fallback, and low-frequency announcements.",
     "product": {
         "group": "Capell Foundation",
