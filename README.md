@@ -29,6 +29,8 @@ Status details:
 
 Screenshot contract: `docs/screenshots.json`.
 
+![Countdown Widget extension card](docs/screenshots/extension-card.svg)
+
 - Countdown Widget extension card (marketplace, required).
 - Countdown fields in Layout Builder (admin, optional).
 - Countdown public output (frontend, optional).
