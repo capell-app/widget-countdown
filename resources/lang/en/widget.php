@@ -2,4 +2,4 @@
 
 declare(strict_types=1);
 
-return ['label' => 'Countdown', 'days' => 'Days', 'hours' => 'Hours', 'minutes' => 'Minutes', 'seconds' => 'Seconds'];
+return ['label' => 'Countdown', 'event_time' => 'Event time', 'days' => 'Days', 'hours' => 'Hours', 'minutes' => 'Minutes', 'seconds' => 'Seconds'];
