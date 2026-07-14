@@ -1,0 +1,35 @@
+{
+    "whatThisPluginAdds": {
+        "text": "Countdown adds a Layout Builder widget for a scheduled target using an IANA timezone and normalized UTC value. Its public output includes a fallback state and time-change announcements.",
+        "evidence": [
+            "src/Filament/CountdownWidget.php",
+            "resources/views/widget.blade.php",
+            "tests/Feature/WidgetCountdownTest.php"
+        ]
+    },
+    "surfaceOutcome": {
+        "text": "Editors set the target, timezone, labels, and optional call to action in Layout Builder, and visitors see the remaining time on the public page.",
+        "evidence": [
+            "capell.json",
+            "src/Filament/CountdownWidget.php",
+            "resources/views/widget.blade.php"
+        ]
+    },
+    "whyItMatters": {
+        "developers": {
+            "text": "Typed input and render boundaries normalize time handling and reject invalid timezone or unsafe call-to-action values before rendering.",
+            "evidence": [
+                "src/Providers/WidgetCountdownServiceProvider.php",
+                "src/Filament/CountdownWidget.php",
+                "tests/Feature/WidgetCountdownTest.php"
+            ]
+        },
+        "teams": {
+            "text": "Campaign and event teams can publish a clear deadline without hand-calculating visitor-facing timezone differences.",
+            "evidence": [
+                "resources/views/widget.blade.php",
+                "tests/Feature/WidgetCountdownTest.php"
+            ]
+        }
+    }
+}

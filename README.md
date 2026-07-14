@@ -6,9 +6,11 @@
 
 Countdown Widget is an **Available**, **No schema impact** Capell package in the **Capell Foundation** product group. It ships as `capell-app/widget-countdown` and extends these surfaces: admin, frontend.
 
-IANA timezone countdowns with normalized UTC targets, an absolute time fallback, and low-frequency announcements.
+Countdown adds a Layout Builder widget for a scheduled target using an IANA timezone and normalized UTC value. Its public output includes a fallback state and time-change announcements.
 
-After install, admins get package-owned management surfaces and public users may see package-owned frontend output or routes.
+Editors set the target, timezone, labels, and optional call to action in Layout Builder, and visitors see the remaining time on the public page.
+
+Evidence: [`src/Filament/CountdownWidget.php`](src/Filament/CountdownWidget.php), [`resources/views/widget.blade.php`](resources/views/widget.blade.php), [`tests/Feature/WidgetCountdownTest.php`](tests/Feature/WidgetCountdownTest.php), [`capell.json`](capell.json).
 
 Status details:
 
@@ -21,9 +23,11 @@ Status details:
 
 ## Why It Matters
 
-**For developers:** The package gives developers package-owned service providers, Data objects, Filament classes, and Blade views instead of pushing this behaviour into core or application code.
+**For developers:** Typed input and render boundaries normalize time handling and reject invalid timezone or unsafe call-to-action values before rendering.
 
-**For teams:** Accessible timezone-safe countdowns with durable absolute-time fallbacks.
+**For teams:** Campaign and event teams can publish a clear deadline without hand-calculating visitor-facing timezone differences.
+
+Evidence: [`src/Providers/WidgetCountdownServiceProvider.php`](src/Providers/WidgetCountdownServiceProvider.php), [`src/Filament/CountdownWidget.php`](src/Filament/CountdownWidget.php), [`tests/Feature/WidgetCountdownTest.php`](tests/Feature/WidgetCountdownTest.php), [`resources/views/widget.blade.php`](resources/views/widget.blade.php).
 
 ## Screens And Workflow
 
@@ -47,25 +51,27 @@ Screenshot contract: `docs/screenshots.json`.
 
 ## Data Model
 
-This package has no schema impact. It does not declare package-owned migrations or required tables.
-
-Docs gap: document extension points here if the package delegates persistence to a host package.
+This package has no schema impact. It extends Capell through `content-widget` contributions instead of declaring package-owned tables.
 
 ## Install Impact
 
-- Admin navigation: adds package-owned Filament classes when registered.
+- Required packages: `capell-app/admin`, `capell-app/core`, `capell-app/frontend`, `capell-app/layout-builder`.
+- Admin navigation: no admin page or resource contribution is declared.
+- Admin/editor extensions: `content-widget: WidgetCountdownContribution`.
 - Permissions: none declared in `capell.json`.
-- Public routes: none detected in package route files.
+- Public routes: none declared.
 - Database changes: no package migrations declared.
+- Config: no package config files.
 - Settings: no package settings declared.
-- Queues or schedules: none detected in standard package paths.
+- Queues or schedules: none declared.
 - Cache tags: `widget-countdown`.
 - Commands: none declared.
 
 ## Common Pitfalls
 
+- Keep required Capell packages on compatible v4 releases: `capell-app/admin`, `capell-app/core`, `capell-app/frontend`, `capell-app/layout-builder`.
 - Keep public Blade and cached HTML free of authoring markers, model IDs, permissions, signed editor URLs, and lazy database queries.
-- Keep `composer.json`, `composer.local.json`, `capell.json`, docs, screenshots, and tests aligned when the package surface changes.
+- Custom write integrations must preserve invalidation for `widget-countdown` cache tags.
 
 ## Troubleshooting
 
@@ -77,13 +83,14 @@ Docs gap: document extension points here if the package delegates persistence to
 ## Quick Start
 
 1. Install the package: `composer require capell-app/widget-countdown`.
-2. Run the required setup: no package migrations are declared; clear cached config and routes if the host app uses caches.
-3. Open the related Capell admin surface and verify Countdown Widget appears.
+2. No package-specific setup command or migrations are declared.
+3. Open the package detail or install-intent surface and confirm the Countdown Widget extension card is present.
 
 ## Next Steps
 
 - [Package docs](docs/README.md)
 - [Overview](docs/overview.md)
+- [Troubleshooting](#troubleshooting)
 - [Screenshot contract](docs/screenshots.json)
 - [Marketplace assets](docs/assets/marketplace/)
 - [Capell content language plan](../../docs/CONTENT_LANGUAGE_PLAN.md)
