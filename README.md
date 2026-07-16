@@ -35,6 +35,8 @@ Screenshot contract: `docs/screenshots.json`.
 
 ![Countdown Widget extension card](docs/screenshots/extension-card.svg)
 
+![Countdown fields in Layout Builder](docs/screenshots/countdown-layout-builder-editor.png)
+
 - Countdown Widget extension card (marketplace, required).
 - Countdown fields in Layout Builder (admin, optional).
 - Countdown public output (frontend, optional).

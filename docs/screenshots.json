@@ -34,6 +34,11 @@
             "required": false,
             "notes": "Capture the timezone and target fields plus a public timer showing days, hours, minutes, and the absolute-time fallback. Capture the editor state before the page is published.",
             "useCase": "An editor can see the fields used to configure the Countdown widget.",
+            "url": "/screenshot-fixtures/widgets/countdown/editor",
+            "waitFor": "[data-widget-screenshot-fixture=\"editor\"]",
+            "colorSchemes": [
+                "light"
+            ],
             "screenshotPath": "packages/widget-countdown/docs/screenshots/countdown-layout-builder-editor.png"
         },
         {
@@ -46,6 +51,11 @@
             "required": false,
             "notes": "Capture the timezone and target fields plus a public timer showing days, hours, minutes, and the absolute-time fallback. Verify the rendered HTML contains no authoring controls, field paths, model identifiers, or signed admin URLs.",
             "useCase": "A visitor understands when an event starts regardless of timezone or JavaScript availability.",
+            "url": "/screenshot-fixtures/widgets/countdown/public",
+            "waitFor": "[data-widget-screenshot-fixture=\"public\"]",
+            "colorSchemes": [
+                "light"
+            ],
             "screenshotPath": "packages/widget-countdown/docs/screenshots/countdown-public-output.png"
         }
     ]
