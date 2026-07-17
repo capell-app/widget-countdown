@@ -36,9 +36,7 @@
             "useCase": "An editor can see the fields used to configure the Countdown widget.",
             "url": "/screenshot-fixtures/widgets/countdown/editor",
             "waitFor": "[data-widget-screenshot-fixture=\"editor\"]",
-            "colorSchemes": [
-                "light"
-            ],
+            "colorSchemes": ["light"],
             "screenshotPath": "packages/widget-countdown/docs/screenshots/countdown-layout-builder-editor.png"
         },
         {
@@ -53,9 +51,7 @@
             "useCase": "A visitor understands when an event starts regardless of timezone or JavaScript availability.",
             "url": "/screenshot-fixtures/widgets/countdown/public",
             "waitFor": "[data-widget-screenshot-fixture=\"public\"]",
-            "colorSchemes": [
-                "light"
-            ],
+            "colorSchemes": ["light"],
             "screenshotPath": "packages/widget-countdown/docs/screenshots/countdown-public-output.png"
         }
     ]
