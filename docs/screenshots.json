@@ -13,6 +13,7 @@
     "entries": [
         {
             "id": "widget-countdown-extension-card",
+            "colorSchemes": ["light"],
             "title": "Countdown Widget extension card.",
             "package": "widget-countdown",
             "surface": "marketplace",
@@ -41,18 +42,18 @@
         },
         {
             "id": "countdown-public-output",
-            "title": "Countdown public output.",
+            "title": "Illustrative countdown public output preview.",
             "package": "widget-countdown",
             "surface": "frontend",
-            "targetType": "artifact",
-            "target": "Seeded public page fixture",
-            "required": false,
-            "notes": "Capture the timezone and target fields plus a public timer showing days, hours, minutes, and the absolute-time fallback. Verify the rendered HTML contains no authoring controls, field paths, model identifiers, or signed admin URLs.",
+            "targetType": "frontend-url",
+            "target": "/screenshot-fixtures/catalogue/widget-countdown/countdown-public-output",
+            "required": true,
+            "notes": "Illustrative deterministic catalogue fixture, not a live package UI capture. Capture the timezone and target fields plus a public timer showing days, hours, minutes, and the absolute-time fallback. Verify the rendered HTML contains no authoring controls, field paths, model identifiers, or signed admin URLs.",
             "useCase": "A visitor understands when an event starts regardless of timezone or JavaScript availability.",
-            "url": "/screenshot-fixtures/widgets/countdown/public",
-            "waitFor": "[data-widget-screenshot-fixture=\"public\"]",
-            "colorSchemes": ["light"],
-            "screenshotPath": "packages/widget-countdown/docs/screenshots/countdown-public-output.png"
+            "url": "/screenshot-fixtures/catalogue/widget-countdown/countdown-public-output",
+            "colorSchemes": ["light", "dark"],
+            "screenshotPath": "packages/widget-countdown/docs/screenshots/countdown-public-output.png",
+            "fixtureKind": "illustrative-catalogue"
         }
     ]
 }
