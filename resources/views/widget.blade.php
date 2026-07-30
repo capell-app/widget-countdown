@@ -6,7 +6,13 @@
     data-expired-label="{{ $renderData->expiredLabel }}"
 >
     <h2>{{ $renderData->title }}</h2>
-    <p>{{ __('capell-widget-countdown::widget.event_time') }}: <time datetime="{{ $renderData->targetUtc }}">{{ \Carbon\CarbonImmutable::parse($renderData->targetUtc)->timezone($renderData->timezone)->isoFormat('LLLL z') }}</time></p>
+    <p>
+        {{ __('capell-widget-countdown::widget.event_time') }}:
+        <time
+            datetime="{{ $renderData->targetUtc }}"
+            >{{ \Carbon\CarbonImmutable::parse($renderData->targetUtc)->timezone($renderData->timezone)->isoFormat('LLLL z') }}</time
+        >
+    </p>
     <div
         class="capell-countdown__values"
         aria-hidden="true"
@@ -26,7 +32,7 @@
         >
     </div>
     <p role="status" aria-live="polite" data-countdown-status></p>
-    @if ($renderData->ctaLabel&&$renderData->ctaUrl)
+    @if ($renderData->ctaLabel && $renderData->ctaUrl)
         <a href="{{ $renderData->ctaUrl }}">{{ $renderData->ctaLabel }}</a>
     @endif
 </section>
