@@ -1,4 +1,4 @@
-document.querySelectorAll('[data-capell-countdown]').forEach((root) => {
+document.querySelectorAll('[data-capell-widget-countdown]').forEach((root) => {
     const target = Date.parse(root.dataset.target)
     let announcedMinute = null
     let timer

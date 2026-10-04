@@ -10,8 +10,6 @@ Countdown adds a Layout Builder widget for a scheduled target using an IANA time
 
 Editors set the target, timezone, labels, and optional call to action in Layout Builder, and visitors see the remaining time on the public page.
 
-Evidence: [`src/Filament/CountdownWidget.php`](src/Filament/CountdownWidget.php), [`resources/views/widget.blade.php`](resources/views/widget.blade.php), [`tests/Feature/WidgetCountdownTest.php`](tests/Feature/WidgetCountdownTest.php), [`capell.json`](capell.json).
-
 Status details:
 
 - Status: Available
@@ -27,19 +25,17 @@ Status details:
 
 **For teams:** Campaign and event teams can publish a clear deadline without hand-calculating visitor-facing timezone differences.
 
-Evidence: [`src/Providers/WidgetCountdownServiceProvider.php`](src/Providers/WidgetCountdownServiceProvider.php), [`src/Filament/CountdownWidget.php`](src/Filament/CountdownWidget.php), [`tests/Feature/WidgetCountdownTest.php`](tests/Feature/WidgetCountdownTest.php), [`resources/views/widget.blade.php`](resources/views/widget.blade.php).
-
 ## Screens And Workflow
 
 Screenshot contract: `docs/screenshots.json`.
 
 ![Countdown Widget extension card](docs/screenshots/extension-card.svg)
 
-![Illustrative countdown public output preview](docs/screenshots/countdown-public-output.png)
+![Countdown public output](docs/screenshots/countdown-public-output.png)
 
 - Countdown Widget extension card (marketplace, required evidence).
 - Countdown fields in Layout Builder (admin, supplementary evidence).
-- Illustrative countdown public output preview (frontend, required evidence).
+- Countdown public output (frontend, required evidence).
 - Countdown fields in Layout Builder with admin sidebar menu open (admin, supplementary evidence).
 
 ## Technical Shape
@@ -108,7 +104,7 @@ This package has no schema impact. It extends Capell through `content-widget` co
 ## Quick Start
 
 1. Install the package: `composer require capell-app/widget-countdown`.
-2. Open `/screenshot-fixtures/catalogue/widget-countdown/countdown-public-output` and confirm the public output renders without admin state.
+2. Open the package detail or install-intent surface and confirm the Countdown Widget extension card is present.
 
 ## Next Steps
 
@@ -121,6 +117,5 @@ This package has no schema impact. It extends Capell through `content-widget` co
 - [Capell documentation design system](../../docs/DESIGN_SYSTEM.md)
 - [Capell and package ERD notes](../../docs/erd/capell-and-package-erds.md)
 - Related packages: [Layout Builder](../layout-builder/README.md).
-- Focused tests: `vendor/bin/pest packages/widget-countdown/tests --configuration=phpunit.xml`.
 
 <!-- prettier-ignore-end -->

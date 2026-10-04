@@ -1,7 +1,7 @@
 @php /** @var \Capell\WidgetCountdown\Data\CountdownRenderData $renderData */ @endphp
 <section
     class="capell-countdown"
-    data-capell-countdown
+    data-capell-widget-countdown
     data-target="{{ $renderData->targetUtc }}"
     data-expired-label="{{ $renderData->expiredLabel }}"
 >
