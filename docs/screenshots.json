@@ -17,11 +17,11 @@
             "title": "Countdown Widget extension card.",
             "package": "widget-countdown",
             "surface": "marketplace",
-            "targetType": "marketplace-asset",
+            "targetType": "artifact",
             "target": "extension-card",
-            "required": true,
+            "required": false,
             "path": "docs/assets/marketplace/extension-card.svg",
-            "screenshotPath": "packages/widget-countdown/docs/screenshots/extension-card.svg",
+            "fixtureKind": "illustrative-catalogue",
             "notes": "Committed Beta Marketplace card artwork for Countdown Widget.",
             "useCase": "A buyer reviews the Beta extension card before enabling Countdown Widget."
         },
@@ -37,7 +37,7 @@
             "useCase": "An editor can see the fields used to configure the Countdown widget.",
             "url": "/screenshot-fixtures/widgets/countdown/editor",
             "waitFor": ".fi-fo-builder-item:not(.fi-collapsed) .fi-fo-builder-item-content",
-            "colorSchemes": ["light"],
+            "colorSchemes": ["light", "dark"],
             "screenshotPath": "packages/widget-countdown/docs/screenshots/countdown-layout-builder-editor.png",
             "user": "admin",
             "requiredViewport": {

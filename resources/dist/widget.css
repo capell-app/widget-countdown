@@ -10,6 +10,12 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 0.75rem;
 }
+.dark .capell-countdown,
+[data-theme='dark'] .capell-countdown {
+    --theme-text: #f8fafc;
+    --theme-surface: #172033;
+    --theme-border: #475569;
+}
 .capell-countdown__values span {
     display: grid;
     text-align: center;

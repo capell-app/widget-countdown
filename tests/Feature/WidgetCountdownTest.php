@@ -30,7 +30,12 @@ it('renders public countdown markup accepted by the public HTML safety action', 
 
     expect($html)
         ->toContain('data-capell-widget-countdown')
+        ->not->toContain('<b data-days>0</b')
         ->not->toContain('data-capell-countdown');
+
+    expect(file_get_contents(__DIR__ . '/../../resources/dist/widget.css'))
+        ->toContain('.dark .capell-countdown')
+        ->toContain('--theme-text: #f8fafc');
 
     AssertPublicHtmlContainsNoAuthoringSurfaceAction::run(new Response(
         '<!doctype html><html><body>' . $html . '</body></html>',

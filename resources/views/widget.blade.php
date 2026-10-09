@@ -1,4 +1,12 @@
 @php /** @var \Capell\WidgetCountdown\Data\CountdownRenderData $renderData */ @endphp
+@php
+    $target = \Carbon\CarbonImmutable::parse($renderData->targetUtc, 'UTC');
+    $remainingSeconds = max(0, \Carbon\CarbonImmutable::now('UTC')->diffInSeconds($target, false));
+    $days = intdiv($remainingSeconds, 86400);
+    $hours = intdiv($remainingSeconds % 86400, 3600);
+    $minutes = intdiv($remainingSeconds % 3600, 60);
+    $seconds = $remainingSeconds % 60;
+@endphp
 <section
     class="capell-countdown"
     data-capell-widget-countdown
@@ -18,16 +26,16 @@
         aria-hidden="true"
     >
         <span
-            ><b data-days>0</b
+            ><b data-days>{{ $days }}</b
             >{{ __('capell-widget-countdown::widget.days') }}</span
         ><span
-            ><b data-hours>0</b
+            ><b data-hours>{{ $hours }}</b
             >{{ __('capell-widget-countdown::widget.hours') }}</span
         ><span
-            ><b data-minutes>0</b
+            ><b data-minutes>{{ $minutes }}</b
             >{{ __('capell-widget-countdown::widget.minutes') }}</span
         ><span
-            ><b data-seconds>0</b
+            ><b data-seconds>{{ $seconds }}</b
             >{{ __('capell-widget-countdown::widget.seconds') }}</span
         >
     </div>
