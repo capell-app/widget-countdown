@@ -29,11 +29,11 @@ Status details:
 
 Screenshot contract: `docs/screenshots.json`.
 
-![Countdown Widget extension card](docs/screenshots/extension-card.svg)
-
 ![Countdown public output](docs/screenshots/countdown-public-output.png)
 
-- Countdown Widget extension card (marketplace, required evidence).
+![Countdown fields in Layout Builder](docs/screenshots/countdown-layout-builder-editor.png)
+
+- Countdown Widget extension card (marketplace, supplementary documentation fixture).
 - Countdown fields in Layout Builder (admin, supplementary evidence).
 - Countdown public output (frontend, required evidence).
 - Countdown fields in Layout Builder with admin sidebar menu open (admin, supplementary evidence).
@@ -55,6 +55,7 @@ Screenshot contract: `docs/screenshots.json`.
 
 ### Manifest contributions
 
+- `asset: Capell\WidgetCountdown\WidgetCountdownContribution`
 - `content-widget: Capell\WidgetCountdown\WidgetCountdownContribution`
 
 ### Health checks
@@ -72,7 +73,7 @@ Screenshot contract: `docs/screenshots.json`.
 
 ## Data Model
 
-This package has no schema impact. It extends Capell through `content-widget` contributions instead of declaring package-owned tables.
+This package has no schema impact. It extends Capell through `asset` contributions and `content-widget` contributions instead of declaring package-owned tables.
 
 ## Install Impact
 
@@ -104,7 +105,7 @@ This package has no schema impact. It extends Capell through `content-widget` co
 ## Quick Start
 
 1. Install the package: `composer require capell-app/widget-countdown`.
-2. Open the package detail or install-intent surface and confirm the Countdown Widget extension card is present.
+2. Open a host admin workflow that uses the package extension and verify Countdown Widget is available.
 
 ## Next Steps
 

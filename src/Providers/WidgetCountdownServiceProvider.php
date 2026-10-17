@@ -12,6 +12,7 @@ use Capell\LayoutBuilder\Providers\AbstractFoundationWidgetServiceProvider;
 use Capell\WidgetCountdown\Data\CountdownInputData;
 use Capell\WidgetCountdown\Data\CountdownRenderData;
 use Capell\WidgetCountdown\Filament\CountdownWidget;
+use Override;
 
 final class WidgetCountdownServiceProvider extends AbstractFoundationWidgetServiceProvider
 {
@@ -19,11 +20,22 @@ final class WidgetCountdownServiceProvider extends AbstractFoundationWidgetServi
 
     public static string $packageName = 'capell-app/widget-countdown';
 
+    #[Override]
+    public function packageBooted(): void {}
+
+    #[Override]
     protected static function resourceGroup(): string
     {
         return 'capell-app.widget-countdown';
     }
 
+    #[Override]
+    protected function bootInstalledRuntime(): void
+    {
+        $this->registerWidget();
+    }
+
+    #[Override]
     protected function definition(): WidgetExtensionDefinitionData
     {
         return new WidgetExtensionDefinitionData(key: 'capell-app.countdown', packageName: self::$packageName, stateVersion: 1, filamentWidget: CountdownWidget::class, inputData: CountdownInputData::class, renderData: CountdownRenderData::class, fallbackView: 'capell-widget-countdown::widget', components: ['blade' => 'capell::widgets.capell-app.countdown'], resourceGroups: [self::resourceGroup()], defaultResourceLoadingStrategy: PresentationLoadingStrategy::Visible, capabilities: new WidgetExtensionCapabilitiesData(requiresInstanceIdentity: true, presentationCapabilities: [WidgetPresentationCapability::Width, WidgetPresentationCapability::Alignment, WidgetPresentationCapability::LoadingStrategy]));

@@ -38,6 +38,11 @@
             "type": "content-widget",
             "key": "capell-app.countdown",
             "class": "Capell\\WidgetCountdown\\WidgetCountdownContribution"
+        },
+        {
+            "type": "asset",
+            "key": "resource-group:capell-app.widget-countdown",
+            "class": "Capell\\WidgetCountdown\\WidgetCountdownContribution"
         }
     ],
     "database": {

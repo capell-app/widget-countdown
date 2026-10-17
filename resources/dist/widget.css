@@ -1,6 +1,6 @@
 .capell-countdown {
     padding: 1.5rem;
-    color: var(--theme-text, #172033);
+    color: var(--theme-foreground, currentColor);
     background: var(--theme-surface, #fff);
     border: 1px solid var(--theme-border, #cbd5e1);
     border-radius: var(--theme-radius, 1rem);
@@ -9,12 +9,6 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 0.75rem;
-}
-.dark .capell-countdown,
-[data-theme='dark'] .capell-countdown {
-    --theme-text: #f8fafc;
-    --theme-surface: #172033;
-    --theme-border: #475569;
 }
 .capell-countdown__values span {
     display: grid;
@@ -33,4 +27,15 @@
     .capell-countdown__values {
         grid-template-columns: repeat(2, 1fr);
     }
+}
+
+/* Brand surfaces stay light; Foundation typography switches at the dark root. */
+.dark .capell-countdown {
+    color: var(--foundation-body-fg, var(--theme-foreground, currentColor));
+    background: var(--foundation-card-bg, var(--theme-surface, #fff));
+    border-color: var(--foundation-border, var(--theme-border, #cbd5e1));
+}
+
+.dark .capell-countdown a {
+    color: var(--foundation-primary-action, var(--theme-primary, #1d4ed8));
 }
