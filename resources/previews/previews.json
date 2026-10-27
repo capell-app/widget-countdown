@@ -1,0 +1,8 @@
+{
+    "previews": [
+        {
+            "widget": "capell-app.countdown",
+            "path": "resources/previews/countdown.webp"
+        }
+    ]
+}

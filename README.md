@@ -101,11 +101,17 @@ This package has no schema impact. It extends Capell through `asset` contributio
 | --- | --- | --- | --- |
 | Package surface is missing after install | Provider or manifest is not loaded | Confirm `capell.json`, package `composer.json`, and provider registration | Reinstall the package, refresh Composer autoload, and clear host caches |
 | Public output leaks unexpected state | Render data, cache variation, or authoring boundary has regressed | Check public Blade, cache tags, and public-output safety tests | Move data loading out of Blade and rerun the package public-output tests |
+| The target time or timezone is refused | The timezone is not an IANA name, or the target is not a full date and time with an offset | Check the Timezone field against the IANA list and that a target date and time is set | Enter a timezone such as `Europe/London` and pick a target date and time |
+| The call to action is refused | The link is not a site path starting with `/` or a full `http://` or `https://` address | Check the call-to-action link and that its label is 80 characters or fewer | Use a path such as `/offers` or a full web address |
 
 ## Quick Start
 
 1. Install the package: `composer require capell-app/widget-countdown`.
-2. Open a host admin workflow that uses the package extension and verify Countdown Widget is available.
+2. Open a page, click **Layout builder**, **Add widgets**, then choose **Countdown**.
+
+## Upgrading
+
+No manual steps between minor versions.
 
 ## Next Steps
 

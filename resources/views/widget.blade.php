@@ -1,7 +1,7 @@
 @php /** @var \Capell\WidgetCountdown\Data\CountdownRenderData $renderData */ @endphp
 @php
     $target = \Carbon\CarbonImmutable::parse($renderData->targetUtc, 'UTC');
-    $remainingSeconds = max(0, \Carbon\CarbonImmutable::now('UTC')->diffInSeconds($target, false));
+    $remainingSeconds = (int) floor(max(0, \Carbon\CarbonImmutable::now('UTC')->diffInSeconds($target, false)));
     $days = intdiv($remainingSeconds, 86400);
     $hours = intdiv($remainingSeconds % 86400, 3600);
     $minutes = intdiv($remainingSeconds % 3600, 60);
@@ -10,7 +10,10 @@
 <section
     class="capell-countdown"
     data-capell-widget-countdown
+    data-remaining-label="{{ __('capell-widget-countdown::widget.remaining') }}"
     data-target="{{ $renderData->targetUtc }}"
+    data-locale="{{ str_replace('_', '-', app()->getLocale()) }}"
+    data-unit-labels="{{ json_encode($renderData->unitLabels(), JSON_THROW_ON_ERROR) }}"
     data-expired-label="{{ $renderData->expiredLabel }}"
 >
     <h2>{{ $renderData->title }}</h2>

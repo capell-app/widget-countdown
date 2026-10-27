@@ -31,5 +31,21 @@
                 "tests/Feature/WidgetCountdownTest.php"
             ]
         }
-    }
+    },
+    "troubleshooting": [
+        {
+            "symptom": "The target time or timezone is refused",
+            "cause": "The timezone is not an IANA name, or the target is not a full date and time with an offset",
+            "check": "Check the Timezone field against the IANA list and that a target date and time is set",
+            "fix": "Enter a timezone such as `Europe/London` and pick a target date and time",
+            "evidence": ["src/Data/CountdownInputData.php"]
+        },
+        {
+            "symptom": "The call to action is refused",
+            "cause": "The link is not a site path starting with `/` or a full `http://` or `https://` address",
+            "check": "Check the call-to-action link and that its label is 80 characters or fewer",
+            "fix": "Use a path such as `/offers` or a full web address",
+            "evidence": ["src/Data/CountdownInputData.php"]
+        }
+    ]
 }
