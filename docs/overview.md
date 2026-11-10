@@ -4,7 +4,7 @@
 
 ## What it does
 
-Countdown gives launches, events, offers, and deadlines a timezone-aware timer. Editors enter an IANA timezone and target; Capell stores the normalized UTC instant.
+Countdown gives launches, events, offers, and deadlines a timezone-aware timer. Editors enter an IANA timezone and target; Capell stores the normalised UTC instant.
 
 ## Do I need to do anything?
 
@@ -16,7 +16,7 @@ In Layout Builder, as a Countdown widget. Public output includes a useful absolu
 
 ## Good to know
 
-- This free beta extension belongs to Capell Foundation and requires Layout Builder.
+- This free beta extension belongs to Capell Essentials and requires Layout Builder.
 - Live announcements use the active page locale. Translate `remaining` and the `day`, `hour`, and `minute` unit keys with CLDR suffixes (`zero`, `one`, `two`, `few`, `many`, `other`); unavailable local categories use the local `other` form first, then the application fallback language with its own plural rules. Unit messages accept `:count`; the remaining-time message accepts `:days`, `:hours`, and `:minutes`.
 - Visual seconds stay hidden from assistive technology and announcements update no more than once per minute.
 

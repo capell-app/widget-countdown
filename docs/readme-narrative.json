@@ -1,6 +1,6 @@
 {
     "whatThisPluginAdds": {
-        "text": "Countdown adds a Layout Builder widget for a scheduled target using an IANA timezone and normalized UTC value. Its public output includes a fallback state and time-change announcements.",
+        "text": "Countdown adds a Layout Builder widget for a scheduled target using an IANA timezone and normalised UTC value. Its public output includes a fallback state and time-change announcements.",
         "evidence": [
             "src/Filament/CountdownWidget.php",
             "resources/views/widget.blade.php",
@@ -17,7 +17,7 @@
     },
     "whyItMatters": {
         "developers": {
-            "text": "Typed input and render boundaries normalize time handling and reject invalid timezone or unsafe call-to-action values before rendering.",
+            "text": "Typed input and render boundaries normalise time handling and reject invalid timezone or unsafe call-to-action values before rendering.",
             "evidence": [
                 "src/Providers/WidgetCountdownServiceProvider.php",
                 "src/Filament/CountdownWidget.php",

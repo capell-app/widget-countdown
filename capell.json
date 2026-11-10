@@ -8,7 +8,7 @@
     "version": "1.0.0",
     "description": "IANA timezone countdowns with normalized UTC targets, an absolute time fallback, and low-frequency announcements.",
     "product": {
-        "group": "Capell Foundation",
+        "group": "Capell Essentials",
         "tier": "free",
         "bundle": "foundation"
     },
@@ -133,7 +133,34 @@
     },
     "marketplace": {
         "summary": "Accessible timezone-safe countdowns with durable absolute-time fallbacks.",
+        "description": "Count down to a launch, event, offer or deadline. Editors enter an IANA timezone and a target, and visitors always see the absolute time before JavaScript turns it into a live timer. Requires Layout Builder. Limits: announcements to assistive technology update at most once a minute, and visual seconds stay hidden from assistive technology.",
+        "problem": "Visitors may miss an approaching deadline when a page only shows a static date.",
+        "outcome": "A page has a countdown to the configured target time.",
+        "faq": [
+            {
+                "question": "How is the target time interpreted?",
+                "answer": "Editors set an IANA timezone and the target is normalised to UTC."
+            },
+            {
+                "question": "What appears during the countdown?",
+                "answer": "The public page shows remaining time and includes time-change announcements."
+            },
+            {
+                "question": "Can a countdown include an action?",
+                "answer": "Yes. Editors can add an optional call to action."
+            }
+        ],
         "screenshots": [
+            {
+                "path": "docs/assets/marketplace/listing-countdown-public-output.png",
+                "alt": "Countdown public output",
+                "caption": "Countdown public output"
+            },
+            {
+                "path": "docs/assets/marketplace/listing-countdown-layout-builder-editor.png",
+                "alt": "Countdown fields in Layout Builder",
+                "caption": "Countdown fields in Layout Builder"
+            },
             {
                 "path": "docs/assets/marketplace/extension-card.jpg",
                 "alt": "Countdown widget preview",
