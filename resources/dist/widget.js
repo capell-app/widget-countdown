@@ -45,7 +45,8 @@
                 String(count),
             )
         }
-        let announcedMinute = null
+        // The status is a live region, so it is written once on load and once at expiry, never on every minute.
+        let announced = false
         let timer
         const stop = () => {
             window.clearInterval(timer)
@@ -72,9 +73,8 @@
                 stop()
                 return false
             }
-            const minute = Math.floor(totalSeconds / 60)
-            if (minute !== announcedMinute) {
-                announcedMinute = minute
+            if (!announced) {
+                announced = true
                 const values = {
                     days: unitLabel('day', days),
                     hours: unitLabel('hour', hours),

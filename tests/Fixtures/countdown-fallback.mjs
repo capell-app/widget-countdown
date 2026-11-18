@@ -2,30 +2,7 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { runInNewContext } from 'node:vm'
 const dataset = JSON.parse(readFileSync(0, 'utf8'))
-const fields = new Map()
-const root = {
-    dataset,
-    isConnected: true,
-    querySelector(selector) {
-        if (!fields.has(selector)) fields.set(selector, { textContent: '' })
-        return fields.get(selector)
-    },
-}
-let tick
 const target = Date.parse(dataset.target)
-let now
-runInNewContext(readFileSync(process.argv[2], 'utf8'), {
-    document: { querySelectorAll: () => [root], addEventListener: () => {} },
-    Date: { parse: Date.parse, now: () => now ?? target - 59000 },
-    Intl,
-    window: {
-        setInterval: (callback) => {
-            tick = callback
-            return 1
-        },
-        clearInterval() {},
-    },
-})
 const expectations = {
     missing: [
         '0 days, 0 hours and 0 minutes remaining',
@@ -43,9 +20,26 @@ const expectations = {
         '2 days, 2 heures et 2 minutes restantes',
     ],
 }
+// The status is announced once on load, so each remaining time is mounted afresh.
 for (const [i, seconds] of [59, 90060, 180120].entries()) {
-    now = target - seconds * 1000
-    tick()
+    const fields = new Map()
+    const root = {
+        dataset,
+        isConnected: true,
+        querySelector(selector) {
+            if (!fields.has(selector)) fields.set(selector, { textContent: '' })
+            return fields.get(selector)
+        },
+    }
+    runInNewContext(readFileSync(process.argv[2], 'utf8'), {
+        document: {
+            querySelectorAll: () => [root],
+            addEventListener: () => {},
+        },
+        Date: { parse: Date.parse, now: () => target - seconds * 1000 },
+        Intl,
+        window: { setInterval: () => 1, clearInterval() {} },
+    })
     assert.equal(
         root.querySelector('[data-countdown-status]').textContent,
         expectations[process.argv[3]][i],

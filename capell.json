@@ -6,7 +6,7 @@
     "kind": "package",
     "capellApiVersion": "^1.0",
     "version": "1.0.0",
-    "description": "IANA timezone countdowns with normalized UTC targets, an absolute time fallback, and low-frequency announcements.",
+    "description": "A countdown for any page, ticking down days, hours, minutes and seconds to your event and showing your own message at zero.",
     "product": {
         "group": "Capell Essentials",
         "tier": "free",
@@ -59,7 +59,7 @@
     },
     "settings": [],
     "permissions": [],
-    "capabilities": ["frontend.public-static"],
+    "capabilities": ["frontend-surface"],
     "security": {
         "riskTier": "low",
         "publicSurface": {
@@ -132,41 +132,63 @@
         "privateDocsRequested": false
     },
     "marketplace": {
-        "summary": "Accessible timezone-safe countdowns with durable absolute-time fallbacks.",
-        "description": "Count down to a launch, event, offer or deadline. Editors enter an IANA timezone and a target, and visitors always see the absolute time before JavaScript turns it into a live timer. Requires Layout Builder. Limits: announcements to assistive technology update at most once a minute, and visual seconds stay hidden from assistive technology.",
-        "problem": "Visitors may miss an approaching deadline when a page only shows a static date.",
-        "outcome": "A page has a countdown to the configured target time.",
+        "summary": "Show visitors how long is left until a wedding, open day, launch or deadline, with the date written out in full above the digits.",
+        "description": "Place a countdown on a page in Layout Builder and visitors see the days, hours, minutes and seconds ticking down below the date written out in full. Give it a title, a target time, the message to show at the end and an optional button with a link. At zero the digits stay on the page and your message appears beneath them. You type the event's local time in the time zone you choose, which starts as UTC, and summer time is applied for you.",
+        "problem": "Guests and visitors keep asking how long is left until our event.",
+        "outcome": "The time left ticks down on the page, with the date written out in full and your message appearing at zero.",
         "faq": [
             {
-                "question": "How is the target time interpreted?",
-                "answer": "Editors set an IANA timezone and the target is normalised to UTC."
+                "question": "How do I set the time for an event in another time zone?",
+                "answer": "Choose the time zone the event happens in, for example Europe/London, then enter the start time as it reads there. Clock changes are handled for you. The time zone box starts as UTC, so change it first."
             },
             {
-                "question": "What appears during the countdown?",
-                "answer": "The public page shows remaining time and includes time-change announcements."
+                "question": "What do visitors see when it reaches zero?",
+                "answer": "The numbers stop at zero and the end message you wrote appears under them."
             },
             {
-                "question": "Can a countdown include an action?",
-                "answer": "Yes. Editors can add an optional call to action."
+                "question": "Does it work if the visitor's browser blocks scripts?",
+                "answer": "Partly. The live ticking and the end message need a small script in the browser. Without it, visitors see the date written out and how much time remained when the page was built."
+            },
+            {
+                "question": "Can I add a button to a countdown?",
+                "answer": "Yes. A countdown can have one optional button with a link."
+            },
+            {
+                "question": "What do I need to put a countdown on a page?",
+                "answer": "Layout Builder, the page builder. Add the Countdown block there and fill in its title, target time and end message."
             }
         ],
         "screenshots": [
             {
                 "path": "docs/assets/marketplace/listing-countdown-public-output.png",
-                "alt": "Countdown public output",
-                "caption": "Countdown public output"
+                "alt": "Open studio weekend countdown showing days, hours, minutes and seconds, an event date in BST and a Plan your visit link",
+                "caption": "Visitors see the date written out, with the time left counting down beneath it."
             },
             {
                 "path": "docs/assets/marketplace/listing-countdown-layout-builder-editor.png",
-                "alt": "Countdown fields in Layout Builder",
-                "caption": "Countdown fields in Layout Builder"
+                "alt": "Page editor with an empty hero field and, just below it, a Countdown 1 block, under the page title and web address",
+                "caption": "Countdown blocks are added to a page from the editor, below the page's hero."
             },
             {
                 "path": "docs/assets/marketplace/extension-card.jpg",
-                "alt": "Countdown widget preview",
-                "caption": "Countdown widget"
+                "alt": "Marketplace card for the Countdown widget with a countdown page and an editor screen and the steps Install, Use and Evolve",
+                "caption": "Card used for the widget's Marketplace listing."
             }
         ],
         "categories": ["foundation", "frontend", "events"]
+    },
+    "contributionTraceability": {
+        "contributions": [
+            {
+                "type": "asset",
+                "key": "resource-group:capell-app.widget-countdown",
+                "providerBucket": "runtime"
+            },
+            {
+                "type": "content-widget",
+                "key": "capell-app.countdown",
+                "providerBucket": "runtime"
+            }
+        ]
     }
 }

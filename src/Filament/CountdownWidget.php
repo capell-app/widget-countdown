@@ -9,6 +9,7 @@ use Carbon\CarbonImmutable;
 use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Components\Utilities\Get;
 
 final class CountdownWidget implements FilamentWidget
 {
@@ -19,6 +20,32 @@ final class CountdownWidget implements FilamentWidget
 
     public static function make(): Block
     {
-        return Block::make(self::getWidgetName())->label(__('capell-widget-countdown::widget.label'))->schema([TextInput::make('title')->required()->maxLength(120), TextInput::make('timezone')->required()->rule('timezone')->default('UTC'), DateTimePicker::make('targetUtc')->timezone('UTC')->seconds(false)->required()->dehydrateStateUsing(static fn (mixed $state): ?string => is_string($state) ? CarbonImmutable::parse($state, 'UTC')->utc()->format(DATE_ATOM) : null), TextInput::make('expiredLabel')->required()->maxLength(120), TextInput::make('ctaLabel')->maxLength(80), TextInput::make('ctaUrl')->maxLength(2048)]);
+        return Block::make(self::getWidgetName())->label(__('capell-widget-countdown::widget.label'))->schema([
+            TextInput::make('title')->required()->maxLength(120),
+            TextInput::make('timezone')->required()->rule('timezone')->default('UTC')->live(onBlur: true),
+            // The picker works in the event's own timezone, so the editor types the event's local time and the
+            // stored value stays a UTC instant. Filament converts the stored instant into that timezone on load
+            // and emits the datetime-local value format the browser input needs.
+            DateTimePicker::make('targetUtc')
+                ->label(__('capell-widget-countdown::widget.target_label'))
+                ->helperText(__('capell-widget-countdown::widget.target_helper'))
+                ->timezone(static fn (Get $get): string => self::timezone($get))
+                ->format(DATE_ATOM)
+                ->seconds(false)
+                ->required()
+                ->dehydrateStateUsing(static fn (mixed $state): ?string => is_string($state) && $state !== ''
+                    ? CarbonImmutable::parse($state)->utc()->format(DATE_ATOM)
+                    : null),
+            TextInput::make('expiredLabel')->required()->maxLength(120),
+            TextInput::make('ctaLabel')->maxLength(80),
+            TextInput::make('ctaUrl')->maxLength(2048),
+        ]);
+    }
+
+    private static function timezone(Get $get): string
+    {
+        $timezone = $get('timezone');
+
+        return is_string($timezone) && $timezone !== '' ? $timezone : 'UTC';
     }
 }

@@ -2,27 +2,27 @@
 
 <!-- prettier-ignore-start -->
 
-## What It Does
+Six weeks before the wedding, guests start asking how long is left. Put a countdown on the invitation page and they'll see the days, hours, minutes and seconds ticking down below the date written out in full. The same works for an open day, a launch or an entry deadline.
 
-Countdown adds a Layout Builder widget for a scheduled target using an IANA timezone and normalised UTC value. Its public output includes a fallback state and time-change announcements.
+Each countdown has a title, a target time, an end message and an optional button with a link. Its colours follow the rest of your site. At zero the digits stay and your message appears beneath them. It needs Layout Builder, the page builder, to go on a page. The live ticking and end message need a small script in the visitor's browser. Without it, they see the written date and the time left when the page was built.
+
+Type the time zone first, such as Europe/London, then the time the event starts there. Summer time is handled for you, so a 6pm wedding in London in July is entered as 6pm, and the written date reads 6:00 PM BST. The time zone box starts as UTC.
+
+Visitors using a screen reader hear the time left once when the page loads and again when it ends.
 
 - **Price and availability:** Check current availability and price on the [Capell Marketplace listing](https://capell.app/extensions/widget-countdown).
 - **Licence:** Check the licence terms on the [Capell Marketplace listing](https://capell.app/extensions/widget-countdown).
-- **Requires:** `PHP ^8.4`, `capell-app/admin ^1.0`, `capell-app/core ^1.0.66`, `capell-app/frontend ^1.0`, `capell-app/layout-builder ^1.0`, `spatie/laravel-package-tools ^1.0`.
+- **Requires:** `PHP ^8.4`, `capell-app/admin ^1.0`, `capell-app/core ^1.0.66`, `capell-app/frontend ^1.0`, `capell-app/layout-builder ^1.0`, `lorisleiva/laravel-actions ^2.8`, `spatie/laravel-package-tools ^1.0`.
 - **Install:** `composer require capell-app/widget-countdown`.
-
-Editors set the target, timezone, labels, and optional call to action in Layout Builder, and visitors see the remaining time on the public page.
-
-## Who It Is For
-
-**For developers:** Typed input and render boundaries normalise time handling and reject invalid timezone or unsafe call-to-action values before rendering.
-
-**For teams:** Campaign and event teams can publish a clear deadline without hand-calculating visitor-facing timezone differences.
 
 ## Quick Start
 
 1. Install the package: `composer require capell-app/widget-countdown`.
 2. Open a page, click **Layout builder**, **Add widgets**, then choose **Countdown**.
+
+## For Developers
+
+Typed input and render boundaries normalise time handling and reject invalid timezone or unsafe call-to-action values before rendering.
 
 ## Configure
 

@@ -6,7 +6,7 @@ Developer reference for `capell-app/widget-countdown`. Start with the [README](.
 
 ## Package Details
 
-Countdown Widget is an **Available**, **No schema impact** Capell package in the **Capell Essentials** product group. It ships as `capell-app/widget-countdown` and extends these surfaces: admin, frontend.
+Countdown Widget is an **Available** Capell package in the **Capell Essentials** product group. It ships as `capell-app/widget-countdown` and extends these surfaces: admin, frontend.
 
 - Status: Available
 - Tier: free
@@ -24,6 +24,10 @@ Countdown Widget is an **Available**, **No schema impact** Capell package in the
 ### Filament classes
 
 - `CountdownWidget`
+
+### Actions
+
+- `ConvertCountdownTargetTimezoneAction`
 
 ### Data objects
 

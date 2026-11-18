@@ -7,11 +7,16 @@ use Capell\Frontend\Actions\AssertPublicHtmlContainsNoAuthoringSurfaceAction;
 use Capell\Frontend\Support\Security\PublicHtmlSafetyInspector;
 use Capell\Tests\Support\RenderedDocument;
 use Capell\Tests\Support\RenderedHtml;
+use Capell\Tests\Support\SchemaStateHarness;
+use Capell\WidgetCountdown\Actions\ConvertCountdownTargetTimezoneAction;
 use Capell\WidgetCountdown\Data\CountdownInputData;
 use Capell\WidgetCountdown\Data\CountdownRenderData;
+use Capell\WidgetCountdown\Filament\CountdownWidget;
 use Capell\WidgetCountdown\Health\WidgetCountdownHealthCheck;
 use Capell\WidgetCountdown\Providers\WidgetCountdownServiceProvider;
 use Carbon\CarbonImmutable;
+use Filament\Forms\Components\Builder;
+use Filament\Schemas\Schema;
 use Illuminate\Translation\Translator;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpFoundation\Response;
@@ -137,3 +142,101 @@ it('uses each resolved language for missing or partial French unit translations'
 
     expect($process->getExitCode())->toBe(0, $process->getErrorOutput() . $process->getOutput());
 })->with(['missing', 'other', 'partial']);
+
+it('converts local time in the chosen timezone to the correct UTC instant across the summer-time boundary', function (string $local, string $timezone, string $expectedUtc): void {
+    expect(ConvertCountdownTargetTimezoneAction::run($local, $timezone))->toBe($expectedUtc);
+})->with([
+    'BST in July' => ['2026-07-01 18:00:00', 'Europe/London', '2026-07-01T17:00:00+00:00'],
+    'GMT in December' => ['2026-12-01 18:00:00', 'Europe/London', '2026-12-01T18:00:00+00:00'],
+    'last GMT day' => ['2026-03-28 18:00:00', 'Europe/London', '2026-03-28T18:00:00+00:00'],
+    'first BST day' => ['2026-03-29 18:00:00', 'Europe/London', '2026-03-29T17:00:00+00:00'],
+    'last BST day' => ['2026-10-24 18:00:00', 'Europe/London', '2026-10-24T17:00:00+00:00'],
+    'first GMT day' => ['2026-10-25 18:00:00', 'Europe/London', '2026-10-25T18:00:00+00:00'],
+    'UTC is unchanged' => ['2026-07-01 18:00:00', 'UTC', '2026-07-01T18:00:00+00:00'],
+    'New York in July' => ['2026-07-01 18:00:00', 'America/New_York', '2026-07-01T22:00:00+00:00'],
+    'invalid timezone falls back to UTC' => ['2026-07-01 18:00:00', 'Mars/Olympus', '2026-07-01T18:00:00+00:00'],
+]);
+
+it('shows a stored UTC instant as local time in the chosen timezone', function (): void {
+    $action = ConvertCountdownTargetTimezoneAction::make();
+
+    expect($action->toLocal('2026-07-01T17:00:00+00:00', 'Europe/London'))->toBe('2026-07-01 18:00:00')
+        ->and($action->toLocal('2026-12-01T18:00:00+00:00', 'Europe/London'))->toBe('2026-12-01 18:00:00')
+        ->and(ConvertCountdownTargetTimezoneAction::run($action->toLocal('2026-07-01T17:00:00+00:00', 'Europe/London'), 'Europe/London'))->toBe('2026-07-01T17:00:00+00:00');
+});
+
+it('renders the converted July target as 6pm London time', function (): void {
+    $utc = ConvertCountdownTargetTimezoneAction::run('2026-07-01 18:00', 'Europe/London');
+    $html = view('capell-widget-countdown::widget', ['renderData' => new CountdownRenderData('Summer', 'Europe/London', $utc, 'Started')])->render();
+
+    expect($html)->toContain('data-target="2026-07-01T17:00:00+00:00"')
+        ->and((new RenderedDocument($html))->element('//time')->textContent)->toContain('6:00 PM');
+});
+
+it('exposes the target picker with a local-time label and helper through the widget form', function (): void {
+    $fields = Schema::make(new SchemaStateHarness)->components([CountdownWidget::make()])->getFlatFields();
+
+    expect($fields)->toHaveKey('targetUtc')
+        ->and($fields['targetUtc']->getLabel())->toBe('Event date and time');
+});
+
+/**
+ * Loads a stored countdown block into the widget form and returns the picker state and a saver.
+ *
+ * @return array{0: string, 1: Closure(string): string}
+ */
+function countdownEditorRoundTrip(string $storedUtc): array
+{
+    $harness = new SchemaStateHarness;
+    $schema = Schema::make($harness)
+        ->components([Builder::make('content')->blocks([CountdownWidget::make()])])
+        ->statePath('data');
+
+    $schema->fill(['content' => [['type' => CountdownWidget::getWidgetName(), 'data' => [
+        'title' => 'Open studio weekend',
+        'timezone' => 'Europe/London',
+        'targetUtc' => $storedUtc,
+        'expiredLabel' => 'The studio is open',
+    ]]]]);
+
+    /** @var array<string, array{data: array{targetUtc: string}}> $content */
+    $content = $harness->data['content'];
+    $key = (string) array_key_first($content);
+
+    return [
+        $content[$key]['data']['targetUtc'],
+        static function (string $edited) use ($harness, $schema, $key): string {
+            /** @var array<string, array{data: array{targetUtc: string}}> $content */
+            $content = $harness->data['content'];
+            $content[$key]['data']['targetUtc'] = $edited;
+            $harness->data['content'] = $content;
+
+            /** @var array<string, array{data: array{targetUtc: string}}> $saved */
+            $saved = $schema->getState()['content'];
+
+            return array_values($saved)[0]['data']['targetUtc'];
+        },
+    ];
+}
+
+it('hydrates the stored UTC target into the picker as the event local time', function (): void {
+    [$shown] = countdownEditorRoundTrip('2030-06-21T09:00:00+00:00');
+
+    expect($shown)->toBe('2030-06-21 10:00');
+});
+
+it('saves the edited local time back as the UTC instant, including across summer time', function (): void {
+    [$shown, $save] = countdownEditorRoundTrip('2030-12-21T09:00:00+00:00');
+
+    expect($shown)->toBe('2030-12-21 09:00')
+        ->and($save('2030-06-21 10:00'))->toBe('2030-06-21T09:00:00+00:00');
+});
+
+it('shows and saves the same local time when the application timezone is not UTC', function (): void {
+    config(['app.timezone' => 'America/New_York']);
+
+    [$shown, $save] = countdownEditorRoundTrip('2030-06-21T09:00:00+00:00');
+
+    expect($shown)->toBe('2030-06-21 10:00')
+        ->and($save($shown))->toBe('2030-06-21T09:00:00+00:00');
+});

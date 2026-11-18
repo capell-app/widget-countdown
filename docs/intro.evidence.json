@@ -1,0 +1,69 @@
+[
+    {
+        "claim": "Visitors see days, hours, minutes and seconds ticking below the written date",
+        "evidence": [
+            "resources/views/widget.blade.php",
+            "resources/dist/widget.js"
+        ]
+    },
+    {
+        "claim": "Each countdown has a title, target time, end message and optional button with link",
+        "evidence": [
+            "src/Filament/CountdownWidget.php",
+            "src/Data/CountdownInputData.php"
+        ]
+    },
+    {
+        "claim": "At zero the digits stay and the message appears beneath",
+        "evidence": [
+            "resources/dist/widget.js",
+            "resources/views/widget.blade.php"
+        ]
+    },
+    {
+        "claim": "The widget needs Layout Builder to be placed on a page",
+        "evidence": ["composer.json", "capell.json"]
+    },
+    {
+        "claim": "Live ticking and the end message need JavaScript; without it visitors see the written date and the time left when the page was built",
+        "evidence": [
+            "resources/views/widget.blade.php",
+            "resources/dist/widget.js",
+            "tests/Feature/WidgetCountdownTest.php"
+        ]
+    },
+    {
+        "claim": "The editor types the local start time in the chosen time zone, summer time is applied, and the time zone starts as UTC",
+        "evidence": [
+            "src/Filament/CountdownWidget.php",
+            "resources/views/widget.blade.php",
+            "src/Actions/ConvertCountdownTargetTimezoneAction.php",
+            "resources/lang/en/widget.php"
+        ]
+    },
+    {
+        "claim": "18:00 typed for Europe/London in July is stored as 17:00 UTC and reads 6:00 PM BST",
+        "evidence": [
+            "resources/views/widget.blade.php",
+            "src/Actions/ConvertCountdownTargetTimezoneAction.php"
+        ]
+    },
+    {
+        "claim": "Its colours follow the rest of your site",
+        "evidence": ["resources/dist/widget.css"]
+    },
+    {
+        "claim": "Screen readers hear the time left once when the page loads and again when it ends",
+        "evidence": [
+            "resources/dist/widget.js",
+            "tests/Feature/WidgetCountdownTest.php"
+        ]
+    },
+    {
+        "claim": "The same works for an open day, a launch or an entry deadline",
+        "evidence": [
+            "src/Filament/CountdownWidget.php",
+            "src/Data/CountdownInputData.php"
+        ]
+    }
+]
