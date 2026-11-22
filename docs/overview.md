@@ -28,10 +28,6 @@ In Layout Builder, as a Countdown widget. Public output includes a useful absolu
 - Live announcements use the active page locale. Translate `remaining` and the `day`, `hour`, and `minute` unit keys with CLDR suffixes (`zero`, `one`, `two`, `few`, `many`, `other`); unavailable local categories use the local `other` form first, then the application fallback language with its own plural rules. Unit messages accept `:count`; the remaining-time message accepts `:days`, `:hours`, and `:minutes`.
 - Visual seconds stay hidden from assistive technology and the status is announced once on load and once at expiry.
 
-## Screenshot status
-
-Capture the timezone and target fields plus a public timer showing days, hours, minutes, and the absolute-time fallback. The committed Marketplace card is interim beta artwork until these two fixture captures are recorded.
-
 Widgets added through deferred content or inline reveal initialise when the content arrives. Repeated content-ready events do not duplicate listeners or countdown timers.
 
 ---

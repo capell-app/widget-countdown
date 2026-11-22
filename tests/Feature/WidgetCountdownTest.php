@@ -116,7 +116,8 @@ it('announces translated plural boundaries and expiry from rendered public label
     $process->run();
 
     expect($process->getExitCode())->toBe(0, $process->getErrorOutput() . $process->getOutput());
-})->with(['fr', 'de']);
+    // Spanish has no package translations, so it shows the English fallback; German now ships its own.
+})->with(['fr', 'es']);
 
 it('uses each resolved language for missing or partial French unit translations', function (string $scenario): void {
     $lines = match ($scenario) {

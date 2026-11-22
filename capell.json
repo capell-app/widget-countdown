@@ -133,7 +133,7 @@
     },
     "marketplace": {
         "summary": "Show visitors how long is left until a wedding, open day, launch or deadline, with the date written out in full above the digits.",
-        "description": "Place a countdown on a page in Layout Builder and visitors see the days, hours, minutes and seconds ticking down below the date written out in full. Give it a title, a target time, the message to show at the end and an optional button with a link. At zero the digits stay on the page and your message appears beneath them. You type the event's local time in the time zone you choose, which starts as UTC, and summer time is applied for you.",
+        "description": "Place a countdown on a page in Layout Builder and visitors see the days, hours, minutes and seconds ticking down below the date written out in full. Give it a title, a target time, the message to show at the end and an optional button with a link. At zero the digits stay on the page and your message appears beneath them. You type the event's local time in the time zone you choose, which starts as UTC, and summer time is applied for you. Screen readers announce the time left when it loads and let visitors know when it ends.",
         "problem": "Guests and visitors keep asking how long is left until our event.",
         "outcome": "The time left ticks down on the page, with the date written out in full and your message appearing at zero.",
         "faq": [
