@@ -56,11 +56,6 @@
                     "selector": ".fi-fo-builder-item:not(.fi-collapsed) .fi-fo-builder-item-content"
                 },
                 {
-                    "type": "fill",
-                    "selector": ".fi-fo-builder-item:not(.fi-collapsed) .fi-fo-builder-item-content input[type=\"datetime-local\"]",
-                    "value": "2030-06-21T10:00"
-                },
-                {
                     "type": "scrollIntoView",
                     "selector": ".fi-fo-builder-item:not(.fi-collapsed)",
                     "block": "start"
