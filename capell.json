@@ -6,6 +6,7 @@
     "kind": "package",
     "capellApiVersion": "^1.0",
     "version": "1.0.0",
+    "launchStatus": "preview",
     "description": "A countdown for any page, ticking down days, hours, minutes and seconds to your event and showing your own message at zero.",
     "product": {
         "group": "Capell Essentials",
